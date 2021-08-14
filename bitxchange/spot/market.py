@@ -1,4 +1,4 @@
-""" All api's related to current market activity """
+""" All api's related to current spot market activity """
 
 from bitxchange.api import API
 from bitxchange.errors import TargetPairError
@@ -7,29 +7,28 @@ from bitxchange.errors import TargetPairError
 class Market(API):
     def available_trading_pairs(self):
         """
-        Description: Returns a list of all active trading pairs on the exchange
+        Description: Returns a list of all active trading pairs currently
+        support by the exchange
         
         GET /api/available_pairs
 
-        Guide:
-
         Args: None
+
         KWargs: None
         """
 
         url_path = '/api/available_pairs'
         return self.query_exchange(url_path)
 
-    def all_market_ticker(self):
+    def all_market_tickers(self):
         """
         Description: Returns current spot tickers for all active pairs on
         the exchange
         
         GET /api/tickers
 
-        Guide:
-
         Args: None
+
         KWargs: None
         """
 
@@ -43,9 +42,8 @@ class Market(API):
 
         GET /api/volume24
 
-        Guide:
-
         Args: None
+
         KWargs: None
         """
 
@@ -54,11 +52,9 @@ class Market(API):
 
     def specific_market_ticker(self, target_pair):
         """
-        Description: Returns a list of all active trading pairs on the exchange
+        Description: Returns the latest ticker for the target pair provided.
         
         GET /api/available_pairs
-
-        Guide:
 
         Args:
             target_pair (str)
@@ -76,11 +72,9 @@ class Market(API):
 
     def order_book(self, target_pair):
         """
-        Description: Returns current orderbook for the target pair
+        Description: Returns current orderbook for the target pair.
         
         GET /api/order_book/<target_pair>
-
-        Guide:
 
         Args:
             target_pair (str)
@@ -102,8 +96,6 @@ class Market(API):
         
         GET /api/trade_history/<target_pair>
 
-        Guide:
-
         Args:
             target_pair (str)
 
@@ -117,4 +109,3 @@ class Market(API):
             return target
         elif target['status'] == 0:
             raise TargetPairError(target_pair)
-

@@ -16,6 +16,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Changelog" href="../changelog.html" />
     <link rel="prev" title="Welcome to Bitxchange Python API Library’s documentation!" href="../index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -35,17 +36,8 @@
             
   <section id="getting-started-with-bitxchange-rest-api">
 <h1>Getting Started with bitxchange REST API<a class="headerlink" href="#getting-started-with-bitxchange-rest-api" title="Permalink to this headline">¶</a></h1>
-<p>Sphinx is a powerful documentation generator that
-has many great features for writing technical documentation including:</p>
-<ul class="simple">
-<li><p>Generate web pages, printable PDFs, documents for e-readers (ePub),
-and more all from the same sources</p></li>
-<li><p>You can use reStructuredText or
-to write documentation</p></li>
-<li><p>An extensive system of cross-referencing code and documentation</p></li>
-<li><p>Syntax highlighted code samples</p></li>
-<li><p>A vibrant ecosystem of first and third-party</p></li>
-</ul>
+<p>This guide will cover the use of the Spot Market API’s, parameter options and their expected results, for more
+information about the specific methods and behaviors can be found in the code documentation in the git repo.</p>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <ul>
@@ -61,14 +53,33 @@ to write documentation</p></li>
 </li>
 </ul>
 </section>
+<section id="api-endpoint-connection">
+<h2>API Endpoint Connection<a class="headerlink" href="#api-endpoint-connection" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Spot(base_url=&lt;api_url&gt;, key=&lt;api_key&gt;, secret=&lt;api_secret&gt;)</p>
+<p>To successfully authenticate with the API endpoint Spot() requires a a valid API &amp; secret key
+to be passed in at time of instanciation.</p>
+<p>If no base url is provided it will revert to Bitxchnage default</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Spot</span><span class="p">(</span>
+  <span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;https://exchangeapi.bit-xchange.co&#39;</span><span class="p">,</span>
+  <span class="n">key</span><span class="o">=</span><span class="s1">&#39;12345678-1234-1234-1234-1234567890123&#39;</span><span class="p">,</span>
+  <span class="n">secret</span><span class="o">=</span><span class="s1">&#39;asdfghj-asdfghjh-asdfghj&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
 <section id="spot-market-data-endpoints">
 <h2>Spot Market Data Endpoints<a class="headerlink" href="#spot-market-data-endpoints" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>All available and trading pairs offered by Bitxchange</p>
+<li><p>available_trading_pairs()</p>
 <blockquote>
-<div><p>Description: Returns a list of all active trading pairs on the exchange</p>
+<div><p>Description: Returns a list of all active trading pairs currently
+support by the exchange</p>
 <p>GET /api/available_pairs</p>
-<p>Repo:</p>
 <p>Args: None</p>
 <p>KWargs: None</p>
 </div></blockquote>
@@ -96,12 +107,11 @@ to write documentation</p></li>
 </pre></div>
 </div>
 </li>
-<li><p>All market tickers</p>
+<li><p>all_market_tickers()</p>
 <blockquote>
 <div><p>Description: Returns current spot tickers for all active pairs on
 the exchange</p>
 <p>GET /api/tickers</p>
-<p>Repo:</p>
 <p>Args: None</p>
 <p>KWargs: None</p>
 </div></blockquote>
@@ -194,12 +204,11 @@ the exchange</p>
 </pre></div>
 </div>
 </li>
-<li><p>24 hour trade volume</p>
+<li><p>volume_24h()</p>
 <blockquote>
 <div><p>Description: Returns the current 24 hour trade volume of each active
 trade pair available on the exchange.</p>
 <p>GET /api/volume24</p>
-<p>Repo:</p>
 <p>Args: None</p>
 <p>KWargs: None</p>
 </div></blockquote>
@@ -247,7 +256,7 @@ trade pair available on the exchange.</p>
 </pre></div>
 </div>
 </li>
-<li><p>Specific market ticker</p>
+<li><p>specific_market_ticker(&lt;target_pair&gt;)</p>
 <blockquote>
 <div><p>Description: Returns a list of all active trading pairs on the exchange</p>
 <p>GET /api/available_pairs</p>
@@ -294,6 +303,129 @@ trade pair available on the exchange.</p>
 </pre></div>
 </div>
 </li>
+<li><p>order_book(&lt;target_pair&gt;)</p>
+<blockquote>
+<div><p>Description: Returns current orderbook for the target pair.</p>
+<p>GET /api/order_book/&lt;target_pair&gt;</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>target_pair (str)</p>
+</dd>
+</dl>
+<p>KWargs: None</p>
+</div></blockquote>
+<p>Request:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
+
+<span class="n">exchange</span> <span class="o">=</span> <span class="n">Spot</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">exchange</span><span class="o">.</span><span class="n">order_book</span><span class="p">(</span><span class="s1">&#39;ETH_BTC&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Response:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+<span class="s1">&#39;status&#39;</span>: <span class="m">1</span>,
+<span class="s1">&#39;message&#39;</span>: <span class="s1">&#39;Success&#39;</span>,
+<span class="s1">&#39;bids&#39;</span>:
+  <span class="o">[</span>
+
+  <span class="o">]</span>,
+<span class="s1">&#39;asks&#39;</span>:
+  <span class="o">[</span>
+    <span class="o">[</span>
+      <span class="s1">&#39;1.00000000&#39;</span>,
+      <span class="s1">&#39;0.05917959&#39;</span>
+    <span class="o">]</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Expected Error Responses:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ERROR: <span class="s1">&#39;BTC_EH&#39;</span> is not a valid target pair or format
+</pre></div>
+</div>
+</li>
+<li><p>trade_order(&lt;target_pair&gt;)</p>
+<blockquote>
+<div><p>Description: displays the trade history of the target pair</p>
+<p>GET /api/trade_history/&lt;target_pair&gt;</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>target_pair (str)</p>
+</dd>
+</dl>
+<p>KWargs: None</p>
+</div></blockquote>
+<p>Request:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
+
+<span class="n">exchange</span> <span class="o">=</span> <span class="n">Spot</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">exchange</span><span class="o">.</span><span class="n">trade_history</span><span class="p">(</span><span class="s1">&#39;ETH_BC&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Response:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+<span class="s1">&#39;status&#39;</span>: <span class="m">1</span>,
+<span class="s1">&#39;message&#39;</span>: <span class="s1">&#39;Success&#39;</span>,
+<span class="s1">&#39;trade_history&#39;</span>:
+  <span class="o">[</span>
+    <span class="o">{</span>
+    <span class="s1">&#39;date&#39;</span>: <span class="s1">&#39;2021-08-10T10:04:03.546Z&#39;</span>,
+    <span class="s1">&#39;type&#39;</span>: <span class="s1">&#39;Sell&#39;</span>,
+    <span class="s1">&#39;rate&#39;</span>: <span class="s1">&#39;0.06511605&#39;</span>,
+    <span class="s1">&#39;amount&#39;</span>: <span class="s1">&#39;1.00000000&#39;</span>,
+    <span class="s1">&#39;total&#39;</span>: <span class="s1">&#39;0.06511605&#39;</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+    <span class="s1">&#39;date&#39;</span>: <span class="s1">&#39;2021-08-10T09:59:56.020Z&#39;</span>,
+    <span class="s1">&#39;type&#39;</span>: <span class="s1">&#39;Sell&#39;</span>,
+    <span class="s1">&#39;rate&#39;</span>: <span class="s1">&#39;0.06511605&#39;</span>,
+    <span class="s1">&#39;amount&#39;</span>: <span class="s1">&#39;1.00000000&#39;</span>,
+    <span class="s1">&#39;total&#39;</span>: <span class="s1">&#39;0.06511605&#39;</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+    <span class="s1">&#39;date&#39;</span>: <span class="s1">&#39;2021-08-10T09:46:02.707Z&#39;</span>,
+    <span class="s1">&#39;type&#39;</span>: <span class="s1">&#39;Buy&#39;</span>,
+    <span class="s1">&#39;rate&#39;</span>: <span class="s1">&#39;0.06923458&#39;</span>,
+    <span class="s1">&#39;amount&#39;</span>: <span class="s1">&#39;1.00000000&#39;</span>,
+    <span class="s1">&#39;total&#39;</span>: <span class="s1">&#39;0.06923458&#39;</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+    <span class="s1">&#39;date&#39;</span>: <span class="s1">&#39;2021-08-10T09:43:50.563Z&#39;</span>,
+    <span class="s1">&#39;type&#39;</span>: <span class="s1">&#39;Sell&#39;</span>,
+    <span class="s1">&#39;rate&#39;</span>: <span class="s1">&#39;0.06509066&#39;</span>,
+    <span class="s1">&#39;amount&#39;</span>: <span class="s1">&#39;1.00000000&#39;</span>,
+    <span class="s1">&#39;total&#39;</span>: <span class="s1">&#39;0.06509066&#39;</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+    <span class="s1">&#39;date&#39;</span>: <span class="s1">&#39;2021-08-10T08:57:20.138Z&#39;</span>,
+    <span class="s1">&#39;type&#39;</span>: <span class="s1">&#39;Sell&#39;</span>,
+    <span class="s1">&#39;rate&#39;</span>: <span class="s1">&#39;0.06503080&#39;</span>,
+    <span class="s1">&#39;amount&#39;</span>: <span class="s1">&#39;1.00000000&#39;</span>,
+    <span class="s1">&#39;total&#39;</span>: <span class="s1">&#39;0.06503080&#39;</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+    <span class="s1">&#39;date&#39;</span>: <span class="s1">&#39;2021-08-06T07:16:31.622Z&#39;</span>,
+    <span class="s1">&#39;type&#39;</span>: <span class="s1">&#39;Sell&#39;</span>,
+    <span class="s1">&#39;rate&#39;</span>: <span class="s1">&#39;0.06459963&#39;</span>,
+    <span class="s1">&#39;amount&#39;</span>: <span class="s1">&#39;3.00000000&#39;</span>,
+    <span class="s1">&#39;total&#39;</span>: <span class="s1">&#39;0.19379889&#39;</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+    <span class="s1">&#39;date&#39;</span>: <span class="s1">&#39;2021-08-06T07:15:53.359Z&#39;</span>,
+    <span class="s1">&#39;type&#39;</span>: <span class="s1">&#39;Sell&#39;</span>,
+    <span class="s1">&#39;rate&#39;</span>: <span class="s1">&#39;0.06461662&#39;</span>,
+    <span class="s1">&#39;amount&#39;</span>: <span class="s1">&#39;1.00000000&#39;</span>,
+    <span class="s1">&#39;total&#39;</span>: <span class="s1">&#39;0.06461662&#39;</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Expected Error Responses:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ERROR: <span class="s1">&#39;BTC_EH&#39;</span> is not a valid target pair or format
+</pre></div>
+</div>
+</li>
 </ul>
 </section>
 <section id="account-order-endpoints">
@@ -309,18 +441,17 @@ authenticated</p>
 <ul>
 <li><p>Create new account order</p>
 <blockquote>
-<div><p>Description: Create new order</p>
+<div><p>Description: Creates a new order under the authed account, user
+has the ability to create a market price buy/sell order OR can post
+a fixed price buy/sell order.</p>
 <p>POST /trade/placeOrder</p>
-<p>repo:</p>
 <p>args: None</p>
 <dl class="simple">
-<dt>kwargs:</dt><dd><ul class="simple">
-<li><p>amount (int) - amount of token to buy or sell</p></li>
-<li><p>price (int) - price to pay or be paid for amount</p></li>
-<li><p>pair (str) - trading target pair</p></li>
-<li><p>order_type (int) - 1=market_price, 2=fixed_price</p></li>
-<li><p>type (str) - ‘buy’ or ‘sell’</p></li>
-</ul>
+<dt>kwargs:</dt><dd><p>amount (int) - amount of token to buy or sell
+price (int) - price to pay or be paid for amount
+pair (str) - trading target pair
+order_type (int) - 1=market_price, 2=fixed_price
+type (str) - ‘buy’ or ‘sell’</p>
 </dd>
 <dt>Mandatory Params:</dt><dd><ul class="simple">
 <li><p>amount</p></li>
@@ -391,24 +522,24 @@ authenticated</p>
 </pre></div>
 </div>
 <p>Expected Error Responses</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Insert errors here
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+<span class="s1">&#39;status&#39;</span>: <span class="m">412</span>, <span class="s1">&#39;message&#39;</span>: <span class="s1">&#39;Amount and Price decimal should not be greater than eight digits.&#39;</span>
+<span class="o">}</span>
+
+<span class="o">{</span>
+<span class="s1">&#39;status&#39;</span>: <span class="m">412</span>, <span class="s1">&#39;message&#39;</span>: <span class="s1">&#39;Insufficient Balance&#39;</span>
+<span class="o">}</span>
 </pre></div>
 </div>
 </li>
 <li><p>Check status of order</p>
 <blockquote>
-<div><p>Description: check status of active order</p>
+<div><p>Description: Check the current status of a given live order
+belonging to the authed account.</p>
 <p>POST /trade/orderstatus</p>
-<p>Guide:</p>
 <p>args: None</p>
 <dl class="simple">
-<dt>kwargs:</dt><dd><ul class="simple">
-<li><p>orderId (str) - trade order ID</p></li>
-</ul>
-</dd>
-<dt>Mandatory Params:</dt><dd><ul class="simple">
-<li><p>orderId</p></li>
-</ul>
+<dt>kwargs:</dt><dd><p>orderId (str) - trade order ID</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -467,13 +598,14 @@ authenticated</p>
 </pre></div>
 </div>
 <p>Expected Error Responses</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Insert errors here
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;&gt;&gt;&#39;</span>
 </pre></div>
 </div>
 </li>
 <li><p>Cancel active order</p>
 <blockquote>
-<div><p>Description: Cancel active order</p>
+<div><p>Description: Cancel a given live order belonging
+to the authed account.</p>
 <p>POST /trade/cancelOrder</p>
 <p>Guide:</p>
 <p>args: None</p>
@@ -513,7 +645,9 @@ authenticated</p>
 </pre></div>
 </div>
 <p>Expected Error Responses</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Insert errors here
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+<span class="s1">&#39;status&#39;</span>: <span class="m">412</span>, <span class="s1">&#39;message&#39;</span>: <span class="s2">&quot;Order doesn&#39;t exists&quot;</span>
+<span class="o">}</span>
 </pre></div>
 </div>
 </li>
@@ -542,10 +676,12 @@ authenticated</p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started with bitxchange REST API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-endpoint-connection">API Endpoint Connection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#spot-market-data-endpoints">Spot Market Data Endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#account-order-endpoints">Account Order Endpoints</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 
 <div class="relations">
@@ -553,6 +689,7 @@ authenticated</p>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../index.html" title="previous chapter">Welcome to Bitxchange Python API Library’s documentation!</a></li>
+      <li>Next: <a href="../changelog.html" title="next chapter">Changelog</a></li>
   </ul></li>
 </ul>
 </div>

@@ -10,8 +10,6 @@ class Account(API):
 
             POST /trade/placeOrder
 
-            Guide:
-
             args: None
 
             kwargs:
@@ -39,11 +37,10 @@ class Account(API):
 
     def check_order_status(self, **kwargs):
         """
-            Description: check status of active order
+            Description: Check the current status of a given live order
+            belonging to the authed account.
 
             POST /trade/orderstatus
-
-            Guide:
 
             args: None
 
@@ -64,11 +61,10 @@ class Account(API):
 
     def cancel_order(self, **kwargs):
         """
-            Description: Cancel active order
+            Description: Cancel a given live order belonging
+            to the authed account.
 
             POST /trade/cancelOrder
-
-            Guide:
 
             args: None
 
@@ -89,11 +85,9 @@ class Account(API):
     def get_wallet_balance(self, **kwargs):
         """
             Description: Returns current wallet balance of the
-            target token.
+            target token on the authed account.
 
             POST /trade/getBalance
-
-            Guide:
 
             args: None
 
@@ -111,11 +105,13 @@ class Account(API):
         url_path = "/trade/getBalance"
         return self.send_request("POST", url_path, kwargs)
 
+    # validates that all params and mandatory params are present
     def _check_required_parameter(self, *args, **kwargs):
         from bitxchange.lib.shared_utils import check_required_parameter
 
         check_required_parameter(*args, **kwargs)
 
+    # Validates that target pair is an active pair on the exchange
     def _validate_target_pairs(self, target_pairs):
         from bitxchange.lib.shared_utils import validate_target_pair
 

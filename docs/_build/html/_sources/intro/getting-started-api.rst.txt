@@ -5,16 +5,8 @@ Getting Started with bitxchange REST API
    :description lang=en: Get started with Bitxchange REST API.
 
 
-Sphinx is a powerful documentation generator that
-has many great features for writing technical documentation including:
-
-* Generate web pages, printable PDFs, documents for e-readers (ePub),
-  and more all from the same sources
-* You can use reStructuredText or
-  to write documentation
-* An extensive system of cross-referencing code and documentation
-* Syntax highlighted code samples
-* A vibrant ecosystem of first and third-party
+This guide will cover the use of the Spot Market API's, parameter options and their expected results, for more
+information about the specific methods and behaviors can be found in the code documentation in the git repo.
 
 
 Installation
@@ -33,16 +25,35 @@ Installation
     python -m pip install git+https://github.com/Wozinga/bitxchange_python_api.git
 
 
+API Endpoint Connection
+-----------------------
+* Spot(base_url=<api_url>, key=<api_key>, secret=<api_secret>)
+
+  To successfully authenticate with the API endpoint Spot() requires a a valid API & secret key
+  to be passed in at time of instanciation.
+
+  If no base url is provided it will revert to Bitxchnage default
+
+  .. code-block:: python
+
+    from bitxchange.spot import Spot
+
+    client = Spot(
+      base_url='https://exchangeapi.bit-xchange.co',
+      key='12345678-1234-1234-1234-1234567890123',
+      secret='asdfghj-asdfghjh-asdfghj'
+    )
+
+
 Spot Market Data Endpoints
 --------------------------
 
-* All available and trading pairs offered by Bitxchange
+* available_trading_pairs()
   
-    Description: Returns a list of all active trading pairs on the exchange
+    Description: Returns a list of all active trading pairs currently
+    support by the exchange
         
     GET /api/available_pairs
-
-    Repo:
 
     Args: None
 
@@ -77,14 +88,12 @@ Spot Market Data Endpoints
     } 
 
 
-* All market tickers
+* all_market_tickers()
   
     Description: Returns current spot tickers for all active pairs on 
     the exchange
         
     GET /api/tickers
-
-    Repo:
 
     Args: None
 
@@ -183,14 +192,12 @@ Spot Market Data Endpoints
     }
 
 
-* 24 hour trade volume
+* volume_24h()
   
     Description: Returns the current 24 hour trade volume of each active
     trade pair available on the exchange.
 
     GET /api/volume24
-
-    Repo:
 
     Args: None
 
@@ -244,7 +251,7 @@ Spot Market Data Endpoints
     } 
 
 
-* Specific market ticker
+* specific_market_ticker(<target_pair>)
   
     Description: Returns a list of all active trading pairs on the exchange
         
@@ -297,6 +304,142 @@ Spot Market Data Endpoints
     ERROR: 'BTC_ET' is not a valid target pair or format 
 
 
+* order_book(<target_pair>)
+  
+    Description: Returns current orderbook for the target pair.
+        
+    GET /api/order_book/<target_pair>
+
+    Args:
+        target_pair (str)
+
+    KWargs: None
+
+  Request:
+
+  .. code-block:: python
+      
+    from bitxchange.spot import Spot
+
+    exchange = Spot()
+
+    print(exchange.order_book('ETH_BTC'))
+
+  Response:
+
+  .. code-block:: bash
+
+    {
+    'status': 1,
+    'message': 'Success',
+    'bids': 
+      [
+
+      ], 
+    'asks': 
+      [
+        [
+          '1.00000000',
+          '0.05917959'
+        ]
+      ]
+    } 
+
+  Expected Error Responses:
+
+  .. code-block:: bash
+
+    ERROR: 'BTC_EH' is not a valid target pair or format
+
+
+* trade_order(<target_pair>)
+  
+    Description: displays the trade history of the target pair
+        
+    GET /api/trade_history/<target_pair>
+
+    Args:
+      target_pair (str)
+
+    KWargs: None
+
+  Request:
+
+  .. code-block:: python
+      
+      from bitxchange.spot import Spot
+
+      exchange = Spot()
+
+      print(exchange.trade_history('ETH_BC'))
+
+  Response:
+
+  .. code-block:: bash
+
+    {
+    'status': 1,
+    'message': 'Success',
+    'trade_history': 
+      [
+        {
+        'date': '2021-08-10T10:04:03.546Z',
+        'type': 'Sell',
+        'rate': '0.06511605',
+        'amount': '1.00000000',
+        'total': '0.06511605'
+        }, 
+        {
+        'date': '2021-08-10T09:59:56.020Z',
+        'type': 'Sell',
+        'rate': '0.06511605',
+        'amount': '1.00000000',
+        'total': '0.06511605'
+        },
+        {
+        'date': '2021-08-10T09:46:02.707Z',
+        'type': 'Buy',
+        'rate': '0.06923458',
+        'amount': '1.00000000',
+        'total': '0.06923458'
+        },
+        {
+        'date': '2021-08-10T09:43:50.563Z',
+        'type': 'Sell',
+        'rate': '0.06509066',
+        'amount': '1.00000000',
+        'total': '0.06509066'
+        },
+        {
+        'date': '2021-08-10T08:57:20.138Z',
+        'type': 'Sell',
+        'rate': '0.06503080',
+        'amount': '1.00000000',
+        'total': '0.06503080'
+        },
+        {
+        'date': '2021-08-06T07:16:31.622Z',
+        'type': 'Sell',
+        'rate': '0.06459963',
+        'amount': '3.00000000',
+        'total': '0.19379889'
+        },
+        {
+        'date': '2021-08-06T07:15:53.359Z',
+        'type': 'Sell',
+        'rate': '0.06461662',
+        'amount': '1.00000000',
+        'total': '0.06461662'
+        }
+      ]
+    } 
+
+  Expected Error Responses:
+
+  .. code-block:: bash
+
+    ERROR: 'BTC_EH' is not a valid target pair or format
+
 Account Order Endpoints
 -----------------------
 All API's that interact with a users account require the API call to be
@@ -312,20 +455,21 @@ authenticated
 
 * Create new account order
   
-    Description: Create new order
-  
-    POST /trade/placeOrder
+    Description: Creates a new order under the authed account, user
+    has the ability to create a market price buy/sell order OR can post
+    a fixed price buy/sell order.
 
-    repo:
+    POST /trade/placeOrder
 
     args: None
 
     kwargs:
-      - amount (int) - amount of token to buy or sell
-      - price (int) - price to pay or be paid for amount
-      - pair (str) - trading target pair
-      - order_type (int) - 1=market_price, 2=fixed_price
-      - type (str) - 'buy' or 'sell'
+      amount (int) - amount of token to buy or sell
+      price (int) - price to pay or be paid for amount
+      pair (str) - trading target pair
+      order_type (int) - 1=market_price, 2=fixed_price
+      type (str) - 'buy' or 'sell'
+
 
     Mandatory Params:
       - amount
@@ -401,25 +545,26 @@ authenticated
 
   .. code-block:: bash
 
-    Insert errors here
+    {
+    'status': 412, 'message': 'Amount and Price decimal should not be greater than eight digits.'
+    }
 
+    {
+    'status': 412, 'message': 'Insufficient Balance'
+    }
 
 
 * Check status of order
   
-    Description: check status of active order
+    Description: Check the current status of a given live order
+    belonging to the authed account.
 
     POST /trade/orderstatus
-
-    Guide:
 
     args: None
 
     kwargs:
-      - orderId (str) - trade order ID
-
-    Mandatory Params:
-      - orderId
+      orderId (str) - trade order ID
 
   Request:
 
@@ -484,12 +629,13 @@ authenticated
 
   .. code-block:: bash
 
-    Insert errors here
+    '>>'
 
 
 * Cancel active order
   
-    Description: Cancel active order
+    Description: Cancel a given live order belonging
+    to the authed account.
 
     POST /trade/cancelOrder
 
@@ -536,5 +682,8 @@ authenticated
 
   .. code-block:: bash
 
-    Insert errors here
+    {
+    'status': 412, 'message': "Order doesn't exists"
+    }
+
 

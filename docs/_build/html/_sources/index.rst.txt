@@ -11,6 +11,7 @@ Welcome to Bitxchange Python API Library's documentation!
    :caption: Contents:
 
    /intro/getting-started-api
+   /changelog
 
 
 
@@ -37,8 +38,8 @@ This is the offical lightweight python library to connect to the Bitxchange publ
 * Source Code: https://github.com/Wozinga/bitxchange_python_api
 * Official API document:
 
-  * https://
-  * https://<github docs url>
+  * https://<read the docs>
+  * https://https://github.com/Wozinga/bitxchange_python_api
 
 * Support channels:
 

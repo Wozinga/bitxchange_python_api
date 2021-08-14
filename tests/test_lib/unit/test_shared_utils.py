@@ -1,3 +1,4 @@
+from bitxchange.errors import TargetPairError
 import pytest
 
 from bitxchange.lib.shared_utils import remove_none_values
@@ -167,5 +168,5 @@ class TestSharedUtils():
         # WHEN I pass that target to the validator to check if it is a valid and active pair
         # THEN I should have tan error returned telling me the pair I chose is not a valid pair.
 
-        with pytest.raises(ValueError, match=f"{target} is not a valid trading pair"):
+        with pytest.raises(TargetPairError):
             validate_target_pair(target, available_pairs)

@@ -11,6 +11,7 @@ Welcome to Bitxchange Python API Library's documentation!
    :caption: Contents:
 
    /intro/getting-started-api
+   /changelog
 
 
 

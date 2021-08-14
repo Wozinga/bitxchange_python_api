@@ -8,15 +8,18 @@ from .__version__ import __version__
 
 class API(object):
     """
-    Description: Returns a list of all active trading pairs on the exchange
-    
-    GET /api/available_pairs
+    Description: Creates the API class which handles all interactions 
+    with the exchange endpoint, all auth params are passed into the API
+    class from the inheriting class.
 
-    Guide:
+    Guide: https://bitxchange-python-api.readthedocs.io/en/latest/index.html
 
     Args:
+        - base_url (str) - base api url, will default if left empty
+        - key (str) - users account API key
+        - secret (str) - Users account API secret
     
-    KWargs:
+    KWargs: None
     """
 
     def __init__(self, base_url, key=None, secret=None):
@@ -32,7 +35,6 @@ class API(object):
             }
         )
 
-
     def query_exchange(self, url_path, data=None):
         return self.send_request("GET", url_path, data=data)
 
@@ -42,6 +44,7 @@ class API(object):
         if data is None:
             data = {}
         
+        # Join base url and passed in endpoint url
         url = self.base_url + url_path
 
         params = remove_none_values(
@@ -50,6 +53,8 @@ class API(object):
                 "data": data
             }
         )
+
+        # Dispatches request to exchange
         response = self._dispatch_request(http_method)(**params)
 
         try:
@@ -60,15 +65,13 @@ class API(object):
         if response_json:
             return response_json
 
-        raise ValueError("Response from backend is empty!")
+        raise ValueError("Response from exchange is empty!")
         
     def _dispatch_request(self, http_method):
         
         http_method = http_method.upper()
-
         method_map = {
             "GET": self.session.get,
-            "DELETE": self.session.delete,
             "POST": self.session.post,
         }
 
