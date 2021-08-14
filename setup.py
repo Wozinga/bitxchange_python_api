@@ -37,7 +37,7 @@ setup(
     install_requires=[
         "requests",
     ],
-    packages=find_packages(exclude=("tests*", "docs*")),
+    packages=find_packages(exclude=("tests*", "docs*", ".github*")),
     classifiers=[
         "Intended Audience :: Developers",
         "Intended Audience :: Financial and Insurance Industry",
