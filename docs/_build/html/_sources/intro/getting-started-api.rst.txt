@@ -1,0 +1,540 @@
+Getting Started with bitxchange REST API
+========================================
+
+.. meta::
+   :description lang=en: Get started with Bitxchange REST API.
+
+
+Sphinx is a powerful documentation generator that
+has many great features for writing technical documentation including:
+
+* Generate web pages, printable PDFs, documents for e-readers (ePub),
+  and more all from the same sources
+* You can use reStructuredText or
+  to write documentation
+* An extensive system of cross-referencing code and documentation
+* Syntax highlighted code samples
+* A vibrant ecosystem of first and third-party
+
+
+Installation
+------------
+
+* Install via package name
+
+  .. code-block:: bash
+
+     pip install bitxchange-python-api
+
+* Alternatively, install with git repository path
+
+  .. code-block:: bash
+
+    python -m pip install git+https://github.com/Wozinga/bitxchange_python_api.git
+
+
+Spot Market Data Endpoints
+--------------------------
+
+* All available and trading pairs offered by Bitxchange
+  
+    Description: Returns a list of all active trading pairs on the exchange
+        
+    GET /api/available_pairs
+
+    Repo:
+
+    Args: None
+
+    KWargs: None
+
+  Request:
+
+  .. code-block:: python
+
+    from bitxchange.spot import Spot
+
+    exchange = Spot()
+
+    print(exchange.available_trading_pairs())
+
+
+  Response:
+
+  .. code-block:: bash
+
+    {
+    'status': 1,
+    'message': 'Success',
+    'combinations':
+      [
+        'ETH_BTC',
+        'BTC_ETH',
+        'USDX_BTC',
+        'USDX_ETH',
+        'XBTC2_USDX'
+      ]
+    } 
+
+
+* All market tickers
+  
+    Description: Returns current spot tickers for all active pairs on 
+    the exchange
+        
+    GET /api/tickers
+
+    Repo:
+
+    Args: None
+
+    KWargs: None
+
+  Request:
+
+  .. code-block:: python
+
+      from bitxchange.spot import Spot
+
+      exchange = Spot()
+
+      print(exchange.all_market_ticker())
+
+  Response:
+
+  .. code-block:: bash
+
+    {
+    'status': 1,
+    'message': 'Success',
+    'combinations': 
+      {
+      'BTC_ETH': 
+        {
+        'pair': 
+          'BTC_ETH',
+          'last': 13.66910445,
+          'lowestAsk': 13.66910445,
+          'highestBid': 14.53241631,
+          'percentChange': 0,
+          'base24hrVolume': 0,
+          'quote24hrVolume': 0,
+          'low24hr': '0.00',
+          'high24hr': '0.00'
+
+        },
+      'XBTC2_USDX': 
+        {
+        'pair': 
+          'XBTC2_USDX',
+          'last': 0.38805,
+          'lowestAsk': 0.38805,
+          'highestBid': 0.38805,
+          'percentChange': 0,
+          'base24hrVolume': 0,
+          'quote24hrVolume': 0,
+          'low24hr': '0.00',
+          'high24hr': '0.00'
+
+        },
+      'USDX_BTC': 
+        {
+        'pair': 
+          'USDX_BTC',
+          'last': 2.1018099999999998,
+          'lowestAsk': 2.1018099999999998,
+          'highestBid': 2.1018099999999998,
+          'percentChange': 0,
+          'base24hrVolume': 0,
+          'quote24hrVolume': 0,
+          'low24hr': '0.00',
+          'high24hr': '0.00'
+
+        },
+      'USDX_ETH': 
+        {
+        'pair':
+          'USDX_ETH',
+          'last': 0.0003025253,
+          'lowestAsk': 0.0003025253,
+          'highestBid': 0.0003025253,
+          'percentChange': 0,
+          'base24hrVolume': 0,
+          'quote24hrVolume': 0,
+          'low24hr': '0.00',
+          'high24hr': '0.00'
+
+        },
+      'ETH_BTC':
+        {
+        'pair':
+          'ETH_BTC',
+          'last': '0.06511605',
+          'lowestAsk': 0.065959507,
+          'highestBid': 0.0701253706,
+          'percentChange': '100.00',
+          'base24hrVolume': 0,
+          'quote24hrVolume': 0,
+          'low24hr': '0.00',
+          'high24hr': '0.00'
+
+        }
+      }
+    }
+
+
+* 24 hour trade volume
+  
+    Description: Returns the current 24 hour trade volume of each active
+    trade pair available on the exchange.
+
+    GET /api/volume24
+
+    Repo:
+
+    Args: None
+
+    KWargs: None
+
+  Request:
+
+  .. code-block:: python
+
+    from bitxchange.spot import Spot
+
+    exchange = Spot()
+
+    print(exchange.volume_24h())
+
+  Response:
+
+  .. code-block:: python
+
+    {
+    'status': 1,
+    'message': 'Success',
+    'combinations':
+      {
+      'ETH_BTC':
+        {
+        'ETH': 0,
+        'BTC': 0
+        },
+      'USDX_BTC':
+        {
+        'USDX': 0,
+        'BTC': 0
+        },
+      'USDX_ETH':
+        {
+        'USDX': 0,
+        'ETH': 0
+        },
+      'BTC_ETH':
+        {
+        'BTC': 0,
+        'ETH': 0
+        },
+      'XBTC2_USDX':
+        {
+        'XBTC2': 0,
+        'USDX': 0
+        }
+      }
+    } 
+
+
+* Specific market ticker
+  
+    Description: Returns a list of all active trading pairs on the exchange
+        
+    GET /api/available_pairs
+
+    repo:
+
+    Args:
+      - target_pair (str)
+
+    KWargs: None
+
+  Request:
+
+  .. code-block:: python
+      
+    from bitxchange.spot import Spot
+
+    exchange = Spot()
+
+    print(exchange.specific_market_ticker('ETH_BTC'))
+
+  Response:
+
+  .. code-block:: bash
+
+    {
+    'status': 1,
+    'message': 'Success',
+    'combinations':
+      {
+      'pair': 'BTC_ETH',
+      'last': 13.66709995,
+      'lowestAsk': 13.66709995,
+      'highestBid': 14.53028521,
+      'percentChange': 0,
+      'base24hrVolume': 0,
+      'quote24hrVolume': 0,
+      'low24hr': '0.00',
+      'high24hr': '0.00'
+
+      }
+
+    }
+
+  Expected Error Responses:
+
+  .. code-block:: bash
+
+    ERROR: 'BTC_ET' is not a valid target pair or format 
+
+
+Account Order Endpoints
+-----------------------
+All API's that interact with a users account require the API call to be
+authenticated
+
+.. code-block:: python
+
+  exchange = Spot(
+    key='12345678-1234-1234-1234-123456789012',
+    secret='abcdefg-abcdefg-abcdefg'
+  )
+
+
+* Create new account order
+  
+    Description: Create new order
+  
+    POST /trade/placeOrder
+
+    repo:
+
+    args: None
+
+    kwargs:
+      - amount (int) - amount of token to buy or sell
+      - price (int) - price to pay or be paid for amount
+      - pair (str) - trading target pair
+      - order_type (int) - 1=market_price, 2=fixed_price
+      - type (str) - 'buy' or 'sell'
+
+    Mandatory Params:
+      - amount
+      - price
+      - pair
+      - order
+      - type
+
+  Request:
+
+  .. code-block:: python
+
+    from bitxchange.spot import Spot
+
+    exchange = Spot(
+      key='12345678-1234-1234-1234-123456789012',
+      secret='abcdefg-abcdefg-abcdefg'
+    )
+
+    params = {
+      "amount": 1,
+      "price": 0.05917959,
+      "pair": "BTC/ETH",
+      "order_type": 2,
+      "type": "sell"
+    }
+
+    x = client.create_order(**params)
+    print(x)
+
+
+  Response:
+
+  .. code-block:: bash
+
+    {
+    'status': 200,
+    'message': 'Successfully placed your order',
+    'data': 
+      {
+      'userId': 'F3Ry+a4de+vJsydbGpB5rpC+llY/+8tqQZCmCVqO+Q0=',
+      'firstCurrency': '5df20c3fb6e5c35860023dd3',
+      'secondCurrency': '5df20c3fb6e5c35860023dd4',
+      'Amount': 1,
+      'Price': 0.05917959,
+      'Type': 'Sell',
+      'Process': 'Pending',
+      'Fee': 0.0005918,
+      'Total': 0.05917959,
+      'wallet': '',
+      'ordertype': '2',
+      'pair': '60a6c1719f97153d6d65ead0',
+      'status': 'active',
+      'fee_per': 1,
+      'stopprice': 0,
+      'partial': False,
+      'trade_his': '',
+      'tradetime': '',
+      'order_no': '',
+      'incre_order': '',
+      'user_type': 'user',
+      'filledAmount': 0,
+      'orderDate': '2021-08-13T18:31:22.266Z',
+      'orderTime': '2021-08-13T18:31:22.266Z',
+      'datetime': '2021-08-13T18:31:22.266Z',
+      'updated_at': '2021-08-13T18:31:22.266Z',
+      '__v': 0,
+      'orderId': 'sYqFgOK1Q9TV5LAJvxtmiSajirIWPphSWWeXcfGuBQ4='
+      }
+    }
+
+  Expected Error Responses
+
+  .. code-block:: bash
+
+    Insert errors here
+
+
+
+* Check status of order
+  
+    Description: check status of active order
+
+    POST /trade/orderstatus
+
+    Guide:
+
+    args: None
+
+    kwargs:
+      - orderId (str) - trade order ID
+
+    Mandatory Params:
+      - orderId
+
+  Request:
+
+  .. code-block:: python
+
+    from bitxchange.spot import Spot
+
+    exchange = Spot(
+      key='12345678-1234-1234-1234-123456789012',
+      secret='abcdefg-abcdefg-abcdefg'
+    )
+
+    params = {
+      "orderId": 'sYqFgOK1Q9TV5LAJvxtmiSajirIWPphSWWeXcfGuBQ4='
+    }
+
+    x = client.check_order_status(**params)
+    print(x)
+
+
+  Response:
+
+  .. code-block:: bash
+
+    {
+    'status': 200,
+    'message': 'success',
+    'data': 
+      {
+      'userId': 'F3345gfdfdfgfhjklB5rpC+llY/+4567890+Q0=',
+      'firstCurrency': '5df20c3fb6e5c35860023dd3',
+      'secondCurrency': '5df20c3fb6e5c35860023dd4',
+      'Amount': 1,
+      'Price': 0.05917959,
+      'Type': 'Sell',
+      'Process': 'Pending',
+      'Fee': 0.0005918,
+      'Total': 0.05917959,
+      'wallet': '',
+      'ordertype': '2',
+      'pair': '60a6c1719f97153d6d65ead0',
+      'status': 'active',
+      'fee_per': 1,
+      'stopprice': 0,
+      'partial': False,
+      'trade_his': '',
+      'tradetime': '',
+      'order_no': '',
+      'incre_order': '',
+      'user_type': 'user',
+      'filledAmount': 0,
+      'orderDate': '2021-08-13T18:31:22.266Z',
+      'orderTime': '2021-08-13T18:31:22.266Z',
+      'datetime': '2021-08-13T18:31:22.266Z',
+      'updated_at': '2021-08-13T18:31:22.266Z',
+      '__v': 0,
+      'orderId': 'sYqFgOK1Q9TV5LAJvxtmiSajirIWPphSWWeXcfGuBQ4='
+      }
+    }
+
+  Expected Error Responses
+
+  .. code-block:: bash
+
+    Insert errors here
+
+
+* Cancel active order
+  
+    Description: Cancel active order
+
+    POST /trade/cancelOrder
+
+    Guide:
+
+    args: None
+
+    kwargs:
+      - orderId (str) - trade order ID
+    
+    Mandatory Params:
+      - orderId
+
+  Request:
+
+  .. code-block:: python
+
+    from bitxchange.spot import Spot
+
+    exchange = Spot(
+      key='12345678-1234-1234-1234-123456789012',
+      secret='abcdefg-abcdefg-abcdefg'
+    )
+
+    params = {
+      'orderId': 'sYqFgOK1Q9TV5LAJvxtmiSajirIWPphSWWeXcfGuBQ4='
+    }
+    x = client.cancel_order(**params)
+    print(x)
+
+
+  Response:
+
+  .. code-block:: bash
+
+    {
+    'status': 200,
+    'message': 'Order cancelled successfully',
+    'currency': 'firstCurrency',
+    'balance': 10
+    }
+  
+  Expected Error Responses
+
+  .. code-block:: bash
+
+    Insert errors here
+

@@ -1,0 +1,8 @@
+bitxchange_sdk.egg-info
+/venv
+*__pycache__*
+
+*bitxchange_sdk.egg-info*
+sandbox.py
+*.pytest_cache*
+*.coverage*
