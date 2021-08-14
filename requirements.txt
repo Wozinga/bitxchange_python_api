@@ -1,12 +1,5 @@
--e git+git@git.wozinga.local:james/bitxchange_python_sdk.git@921807e8712877f76726795704fb8551b6668bda#egg=bitxchange_sdk
 certifi==2021.5.30
-charset-normalizer==2.0.3
-idna==3.2
-requests==2.26.0
-urllib3==1.26.6
--e git+git@git.wozinga.local:james/bitxchange_python_sdk.git@d166ddf72b3484b10423bed6bf23612345f7600b#egg=bitxchange_sdk
-certifi==2021.5.30
-charset-normalizer==2.0.3
+charset-normalizer==2.0.4
 idna==3.2
 requests==2.26.0
 urllib3==1.26.6

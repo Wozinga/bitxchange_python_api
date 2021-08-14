@@ -7,7 +7,7 @@ DESCRIPTION = (
     "This is a python sdk for connecting to the Bitxchnage API's."
 )
 AUTHOR = "Bitxchange"
-URL = "https://github.com/Wozinga/bitxchange_python_sdk"
+URL = "https://github.com/Wozinga/bitxchange_python_api"
 VERSION = None
 
 about = {}
