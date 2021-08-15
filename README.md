@@ -7,17 +7,14 @@ This is a lightweight library that works as a connector to [Bitxchange public AP
 
 
 ## Installation
-
 ```bash
 pip install bitxchange-py-api
 ```
 
 ## Documentation
-
 https://bitxchange-python-api.readthedocs.io/en/latest/
 
 ## RESTful APIs
-
 Usage examples:
 ```python
 from bitxchange.spot import Spot
