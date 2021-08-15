@@ -30,7 +30,7 @@ class TestMarket:
         self.market_obj.available_trading_pairs()
         mocked_query_exchange.assert_called_once_with("/api/available_pairs")
 
-    def test_all_market_ticker(self, mocked_query_exchange):
+    def test_all_market_tickers(self, mocked_query_exchange):
         """
             spot.market.all_market_ticker() should return the latest ticker
             for all active pairs on the exchange
@@ -39,7 +39,7 @@ class TestMarket:
         # WHEN I call the the url endpoint
         # THEN I am returned a JSON list of all latest tickers
 
-        self.market_obj.all_market_ticker()
+        self.market_obj.all_market_tickers()
         mocked_query_exchange.assert_called_once_with("/api/tickers")
 
     def test_volume_24h(self, mocked_query_exchange):
