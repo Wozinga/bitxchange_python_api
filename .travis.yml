@@ -15,6 +15,6 @@ install:
 
 script:
   - pytest
-  - pytest --cov=bitxchange tests/
+  - coverage report -m
 after_success:
   - codecov
