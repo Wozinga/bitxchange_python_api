@@ -1,11 +1,10 @@
 bitxchange_sdk.egg-info
 /venv
 *__pycache__*
-
-*bitxchange_sdk.egg-info*
-*bitxchange_api.egg-info*
+*bitxchange_py_api.egg-info*
 sandbox.py
 *.pytest_cache*
 *.coverage*
 package-lock.json
 *dist*
+*build*
