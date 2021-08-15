@@ -2,18 +2,18 @@
 [![Python 3.6](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/release/python-360/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This is a lightweight library that works as a connector to [Bitxchange public API](read_the_docs_url)
+This is a lightweight library that works as a connector to [Bitxchange public API](https://bitxchange-python-api.readthedocs.io/en/latest/)
 
 
 ## Installation
 
 ```bash
-pip install bitxchange-python-api
+pip install bitxchange-api
 ```
 
 ## Documentation
 
-[https://readthedocs.org](https://readthedocs.org)
+https://bitxchange-python-api.readthedocs.io/en/latest/
 
 ## RESTful APIs
 
@@ -35,18 +35,4 @@ order = client.create_order(**params)
 
 print(order)
 ```
-Please find `examples` folder to check for more endpoints.
-
-### Base URL
-
-If `base_url` is not provided, it defaults to `https://exchangeapi.bit-xchange.co`.<br/>
-It's recommended to pass in the `base_url` parameter.
-
-## Test Case
-
-```python
-# In case packages are not installed yet
-pip install pytest
-
-cd tests pytest
-```
+You can find more examples in the documentation at the link above.

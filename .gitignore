@@ -3,10 +3,9 @@ bitxchange_sdk.egg-info
 *__pycache__*
 
 *bitxchange_sdk.egg-info*
+*bitxchange_api.egg-info*
 sandbox.py
 *.pytest_cache*
 *.coverage*
 package-lock.json
-
-
-flake8 --exclude *.git*,*__pycache__*,*docs*,*venv*
+*dist*

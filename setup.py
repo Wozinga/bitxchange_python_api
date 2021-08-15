@@ -2,9 +2,9 @@ import os
 from setuptools import setup, find_packages
 
 
-NAME = "bitxchange_sdk"
+NAME = "bitxchange-api"
 DESCRIPTION = (
-    "This is a python sdk for connecting to the Bitxchnage API's."
+    "Offical Bitxchange python API library"
 )
 AUTHOR = "Bitxchange"
 URL = "https://github.com/Wozinga/bitxchange_python_api"
