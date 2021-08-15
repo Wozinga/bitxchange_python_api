@@ -36,16 +36,10 @@ This is the offical lightweight python library to connect to the Bitxchange publ
 * Source Code: `Bitxchange API Library <https://github.com/Wozinga/bitxchange_python_api>`_
 
 * Source Code: https://github.com/Wozinga/bitxchange_python_api
-* Official API document:
-
-  * https://<read the docs>
-  * https://https://github.com/Wozinga/bitxchange_python_api
 
 * Support channels:
 
   * Telegram Channel: https://t.me/bitxchange_developer_support
-
-* API key setup: <how to setup API docs>
 
 
 Quick Start
@@ -58,7 +52,7 @@ Installation
 
   .. code-block:: bash
 
-     pip install bitxchange-python-api
+     pip install bitxchange-py-api
 
 * Alternatively, install with git repository path
 
