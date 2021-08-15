@@ -5,6 +5,6 @@ bitxchange_sdk.egg-info
 sandbox.py
 *.pytest_cache*
 *.coverage*
-package-lock.json
+*package-lock.json
 *dist*
 *build*
