@@ -2,7 +2,7 @@ import os
 from setuptools import setup, find_packages
 
 
-NAME = "bitxchange-api"
+NAME = "bitxchange-py-api"
 DESCRIPTION = (
     "Offical Bitxchange python API library"
 )

@@ -8,7 +8,7 @@ This is a lightweight library that works as a connector to [Bitxchange public AP
 ## Installation
 
 ```bash
-pip install bitxchange-api
+pip install bitxchange-py-api
 ```
 
 ## Documentation
