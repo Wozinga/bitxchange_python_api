@@ -16,7 +16,7 @@ Installation
 
   .. code-block:: bash
 
-     pip install bitxchange-python-api
+     pip install bitxchange-py-api
 
 * Alternatively, install with git repository path
 
