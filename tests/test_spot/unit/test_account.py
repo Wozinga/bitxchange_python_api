@@ -1,7 +1,7 @@
 import pytest
 
-from bitxchange.errors import TargetPairError
 from bitxchange.spot import account
+
 
 @pytest.fixture(scope="function")
 def mocked_send_request(mocker):
@@ -10,6 +10,7 @@ def mocked_send_request(mocker):
     yield mocked_send_request
 
     # cleanup
+
 
 class TestAccount:
 
@@ -53,7 +54,7 @@ class TestAccount:
 
         with pytest.raises(ValueError):
             self.account_obj.create_order(**params)
-        
+
         mocked_send_request.assert_not_called()
 
     def test_check_order_status_passing(self, mocked_send_request):
@@ -84,7 +85,7 @@ class TestAccount:
         params = {}
         with pytest.raises(ValueError):
             self.account_obj.check_order_status(**params)
-        
+
         mocked_send_request.assert_not_called()
 
     def test_cancel_order_passing(self, mocked_send_request):

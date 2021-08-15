@@ -1,14 +1,12 @@
 import json
-import logging
 import requests
 
 from .__version__ import __version__
-# from bitxchange.spot.market import available_trading_pairs
 
 
 class API(object):
     """
-    Description: Creates the API class which handles all interactions 
+    Description: Creates the API class which handles all interactions
     with the exchange endpoint, all auth params are passed into the API
     class from the inheriting class.
 
@@ -18,7 +16,7 @@ class API(object):
         - base_url (str) - base api url, will default if left empty
         - key (str) - users account API key
         - secret (str) - Users account API secret
-    
+
     KWargs: None
     """
 
@@ -43,7 +41,7 @@ class API(object):
 
         if data is None:
             data = {}
-        
+
         # Join base url and passed in endpoint url
         url = self.base_url + url_path
 
@@ -66,9 +64,9 @@ class API(object):
             return response_json
 
         raise ValueError("Response from exchange is empty!")
-        
+
     def _dispatch_request(self, http_method):
-        
+
         http_method = http_method.upper()
         method_map = {
             "GET": self.session.get,

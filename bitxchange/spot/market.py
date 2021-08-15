@@ -9,7 +9,7 @@ class Market(API):
         """
         Description: Returns a list of all active trading pairs currently
         support by the exchange
-        
+
         GET /api/available_pairs
 
         Args: None
@@ -24,7 +24,7 @@ class Market(API):
         """
         Description: Returns current spot tickers for all active pairs on
         the exchange
-        
+
         GET /api/tickers
 
         Args: None
@@ -53,7 +53,7 @@ class Market(API):
     def specific_market_ticker(self, target_pair):
         """
         Description: Returns the latest ticker for the target pair provided.
-        
+
         GET /api/available_pairs
 
         Args:
@@ -73,7 +73,7 @@ class Market(API):
     def order_book(self, target_pair):
         """
         Description: Returns current orderbook for the target pair.
-        
+
         GET /api/order_book/<target_pair>
 
         Args:
@@ -93,7 +93,7 @@ class Market(API):
     def trade_history(self, target_pair):
         """
         Description: displays the trade history of the target pair
-        
+
         GET /api/trade_history/<target_pair>
 
         Args:

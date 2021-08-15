@@ -68,7 +68,7 @@ class TestMarket:
             mocker.MagicMock(return_value={"status": 1})
         )
 
-        target_pair = "XYZ"  # Target pair can be anything as backend is mocked
+        target_pair = "ETH_BTC"  # Target pair can be anything as backend is mocked
         resp = self.market_obj.specific_market_ticker(target_pair)
         mocked_query_exchange.assert_called_once_with(f"/api/ticker/{target_pair}")
 
@@ -88,11 +88,8 @@ class TestMarket:
             mocker.MagicMock(return_value={"status": 0})
         )
 
-        target_pair = "XYZ"  # Target pair can be anything as backend is mocked
-        with pytest.raises(
-            TargetPairError,
-            match=f"ERROR: '{target_pair}' is not a valid target pair or format"
-        ):
+        target_pair = "ETH_BTC"  # Target pair can be anything as backend is mocked
+        with pytest.raises(TargetPairError):
             self.market_obj.specific_market_ticker(target_pair)
 
         mocked_query_exchange.assert_called_once_with(f"/api/ticker/{target_pair}")
@@ -132,10 +129,7 @@ class TestMarket:
         )
 
         target_pair = "XYZ"  # Target pair can be anything as backend is mocked
-        with pytest.raises(
-            TargetPairError,
-            match=f"ERROR: '{target_pair}' is not a valid target pair or format"
-        ):
+        with pytest.raises(TargetPairError):
             self.market_obj.order_book(target_pair)
 
         mocked_query_exchange.assert_called_once_with(f"/api/order_book/{target_pair}")
@@ -175,10 +169,7 @@ class TestMarket:
         )
 
         target_pair = "XYZ"  # Target pair can be anything as backend is mocked
-        with pytest.raises(
-            TargetPairError,
-            match=f"ERROR: '{target_pair}' is not a valid target pair or format"
-        ):
+        with pytest.raises(TargetPairError):
             self.market_obj.trade_history(target_pair)
 
         mocked_query_exchange.assert_called_once_with(f"/api/trade_history/{target_pair}")

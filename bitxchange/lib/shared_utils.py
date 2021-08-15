@@ -12,6 +12,7 @@ def remove_none_values(input) -> dict:
             resp[kw] = input[kw]
     return resp
 
+
 def check_required_parameter(mandatory_params=None, **kwargs):
     """
     Take injected kwargs and validate that there are no empty values.
@@ -19,7 +20,7 @@ def check_required_parameter(mandatory_params=None, **kwargs):
     If mandatory params are also injected then params will be checked to have
     all mandatory params present before checking for none values.
     """
-    
+
     # If mandatory params have been passed check mand_params are in params
     if mandatory_params:
         missing_params = []
@@ -36,8 +37,12 @@ def check_required_parameter(mandatory_params=None, **kwargs):
         if not value:
             raise ParameterRequiredError([key])
 
+
 # Takes target_pair and validates they are active pair on the exchange
-def validate_target_pair(target_pair: str, available_pairs: Optional[Dict[str, Any]]=None):
+def validate_target_pair(
+    target_pair: str,
+    available_pairs: Optional[Dict[str, Any]] = None
+):
 
     if not available_pairs:
         from bitxchange.spot import Spot

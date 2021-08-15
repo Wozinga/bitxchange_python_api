@@ -1,4 +1,3 @@
-  
 class Error(Exception):
     pass
 
@@ -8,7 +7,7 @@ class TargetPairError(Error):
         self.target_pair = target_pair
 
     def __str__(self):
-        return f"ERROR: '{self.target_pair}' is not a valid target pair or format"
+        return f"ERROR: '{self.target_pair}' not a valid target pair or format"
 
 
 class ParameterRequiredError(Error):
