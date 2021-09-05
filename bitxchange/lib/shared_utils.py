@@ -5,11 +5,14 @@ from typing import Optional, Dict, Any
 
 
 def remove_none_values(input) -> dict:
-    # Removes any empty values from input dict and returns a clean dict
+    """Removes any empty values from input dict and returns a clean dict"""
+
     resp = {}
+
     for kw in input.keys():
         if input[kw] is not None:
             resp[kw] = input[kw]
+
     return resp
 
 
@@ -37,12 +40,11 @@ def check_required_parameter(mandatory_params=None, **kwargs):
         if not value:
             raise ParameterRequiredError([key])
 
-
-# Takes target_pair and validates they are active pair on the exchange
 def validate_target_pair(
     target_pair: str,
     available_pairs: Optional[Dict[str, Any]] = None
 ):
+    """Takes target_pair and validates they are active pair on the exchange"""
 
     if not available_pairs:
         from bitxchange.spot import Spot

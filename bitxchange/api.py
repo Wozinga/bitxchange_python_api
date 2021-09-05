@@ -39,6 +39,8 @@ class API(object):
         return self.send_request("GET", url_path, data=data)
 
     def send_request(self, http_method, url_path, data=None):
+        """Send request params to the exchange for response"""
+
         from bitxchange.lib.shared_utils import remove_none_values
 
         if data is None:
@@ -68,6 +70,7 @@ class API(object):
         raise ValueError("Response from exchange is empty!")
 
     def _dispatch_request(self, http_method):
+        """Returns session type based on send_request params"""
 
         http_method = http_method.upper()
         method_map = {
