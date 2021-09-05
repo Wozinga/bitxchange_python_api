@@ -3,16 +3,10 @@ from typing import Any, Dict, Optional
 from bitxchange.errors import ParameterRequiredError, TargetPairError
 
 
-def remove_none_values(input) -> dict:
-    """Removes any empty values from input dict and returns a clean dict"""
+def remove_none_values(data) -> dict:
+    """Remove any `None`-valued items from input dict and return a clean dict."""
 
-    resp = {}
-
-    for kw in input.keys():
-        if input[kw] is not None:
-            resp[kw] = input[kw]
-
-    return resp
+    return {key: value for key, value in data.items() if value is not None}
 
 
 def check_required_parameter(mandatory_params=None, **kwargs):
