@@ -17,7 +17,7 @@ class Market(API):
         KWargs: None
         """
 
-        url_path = '/api/available_pairs'
+        url_path = "/api/available_pairs"
         return self.query_exchange(url_path)
 
     def all_market_tickers(self):
@@ -32,7 +32,7 @@ class Market(API):
         KWargs: None
         """
 
-        url_path = '/api/tickers'
+        url_path = "/api/tickers"
         return self.query_exchange(url_path)
 
     def volume_24h(self):
@@ -47,7 +47,7 @@ class Market(API):
         KWargs: None
         """
 
-        url_path = '/api/volume24'
+        url_path = "/api/volume24"
         return self.query_exchange(url_path)
 
     def specific_market_ticker(self, target_pair):
@@ -65,9 +65,9 @@ class Market(API):
         url_path = f"/api/ticker/{target_pair}"
         target = self.query_exchange(url_path)
 
-        if target['status'] == 1:
+        if target["status"] == 1:
             return target
-        elif target['status'] == 0:
+        elif target["status"] == 0:
             raise TargetPairError(target_pair)
 
     def order_book(self, target_pair):
@@ -85,9 +85,9 @@ class Market(API):
         url_path = f"/api/order_book/{target_pair}"
         target = self.query_exchange(url_path)
 
-        if target['status'] == 1:
+        if target["status"] == 1:
             return target
-        elif target['status'] == 0:
+        elif target["status"] == 0:
             raise TargetPairError(target_pair)
 
     def trade_history(self, target_pair):
@@ -105,7 +105,7 @@ class Market(API):
         url_path = f"/api/trade_history/{target_pair}"
         target = self.query_exchange(url_path)
 
-        if target['status'] == 1:
+        if target["status"] == 1:
             return target
-        elif target['status'] == 0:
+        elif target["status"] == 0:
             raise TargetPairError(target_pair)

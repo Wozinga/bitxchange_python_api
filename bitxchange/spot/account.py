@@ -4,29 +4,23 @@ from bitxchange.api import API
 class Account(API):
     def create_order(self, **kwargs):
         """
-            Description: Creates a new order under the authed account, user
-            has the ability to create a market price buy/sell order OR can post
-            a fixed price buy/sell order.
+        Description: Creates a new order under the authed account, user
+        has the ability to create a market price buy/sell order OR can post
+        a fixed price buy/sell order.
 
-            POST /trade/placeOrder
+        POST /trade/placeOrder
 
-            args: None
+        args: None
 
-            kwargs:
-                amount (int) - amount of token to buy or sell
-                price (int) - price to pay or be paid for amount
-                pair (str) - trading target pair
-                order_type (int) - 1=market_price, 2=fixed_price
-                type (str) - 'buy' or 'sell'
+        kwargs:
+            amount (int) - amount of token to buy or sell
+            price (int) - price to pay or be paid for amount
+            pair (str) - trading target pair
+            order_type (int) - 1=market_price, 2=fixed_price
+            type (str) - 'buy' or 'sell'
         """
 
-        mandatory_params = {
-            "amount",
-            "price",
-            "pair",
-            "order_type",
-            "type"
-        }
+        mandatory_params = {"amount", "price", "pair", "order_type", "type"}
 
         # retrun error if Kwargs is missing a mandatory field
         self._check_required_parameter(mandatory_params, **kwargs)
@@ -37,20 +31,18 @@ class Account(API):
 
     def check_order_status(self, **kwargs):
         """
-            Description: Check the current status of a given live order
-            belonging to the authed account.
+        Description: Check the current status of a given live order
+        belonging to the authed account.
 
-            POST /trade/orderstatus
+        POST /trade/orderstatus
 
-            args: None
+        args: None
 
-            kwargs:
-                orderId (str) - trade order ID
+        kwargs:
+            orderId (str) - trade order ID
         """
 
-        mandatory_params = {
-            "orderId"
-        }
+        mandatory_params = {"orderId"}
 
         # retrun error if Kwargs is missing a mandatory field
         self._check_required_parameter(mandatory_params, **kwargs)
@@ -61,20 +53,18 @@ class Account(API):
 
     def cancel_order(self, **kwargs):
         """
-            Description: Cancel a given live order belonging
-            to the authed account.
+        Description: Cancel a given live order belonging
+        to the authed account.
 
-            POST /trade/cancelOrder
+        POST /trade/cancelOrder
 
-            args: None
+        args: None
 
-            kwargs:
-                orderId (str) - trade order ID
+        kwargs:
+            orderId (str) - trade order ID
         """
 
-        mandatory_params = {
-            "orderId"
-        }
+        mandatory_params = {"orderId"}
 
         # retrun error if Kwargs is missing a mandatory field
         self._check_required_parameter(mandatory_params, **kwargs)
@@ -84,20 +74,18 @@ class Account(API):
 
     def get_wallet_balance(self, **kwargs):
         """
-            Description: Returns current wallet balance of the
-            target token on the authed account.
+        Description: Returns current wallet balance of the
+        target token on the authed account.
 
-            POST /trade/getBalance
+        POST /trade/getBalance
 
-            args: None
+        args: None
 
-            kwargs:
-                symbol (str) - token symbol
+        kwargs:
+            symbol (str) - token symbol
         """
 
-        mandatory_params = {
-            "symbol"
-        }
+        mandatory_params = {"symbol"}
 
         # retrun error if Kwargs is missing a mandatory field
         self._check_required_parameter(mandatory_params, **kwargs)

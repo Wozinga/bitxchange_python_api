@@ -29,10 +29,7 @@ class API(object):
         self.secret = secret
         self.session = requests.Session()
         self.session.headers.update(
-            {
-                "apikey": str(self.key),
-                "secretkey": str(self.secret)
-            }
+            {"apikey": str(self.key), "secretkey": str(self.secret)}
         )
 
     def query_exchange(self, url_path, data=None):
@@ -47,14 +44,9 @@ class API(object):
             data = {}
 
         # Join base url and passed in endpoint url
-        url = urljoin(self.base_url, url_path) 
+        url = urljoin(self.base_url, url_path)
 
-        params = remove_none_values(
-            {
-                "url": url,
-                "data": data
-            }
-        )
+        params = remove_none_values({"url": url, "data": data})
 
         # Dispatches request to exchange
         response = self._dispatch_request(http_method)(**params)

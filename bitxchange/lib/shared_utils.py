@@ -33,16 +33,18 @@ def check_required_parameter(mandatory_params=None, **kwargs):
                 missing_params.append(param)
 
         if missing_params:
-            raise ValueError(f"Following fields are missing as attributes: {','.join(missing_params)}")
+            raise ValueError(
+                f"Following fields are missing as attributes: {','.join(missing_params)}"
+            )
 
     # validate all params have no None values
     for key, value in kwargs.items():
         if not value:
             raise ParameterRequiredError([key])
 
+
 def validate_target_pair(
-    target_pair: str,
-    available_pairs: Optional[Dict[str, Any]] = None
+    target_pair: str, available_pairs: Optional[Dict[str, Any]] = None
 ):
     """Takes target_pair and validates they are active pair on the exchange"""
 
@@ -52,7 +54,7 @@ def validate_target_pair(
         spot = Spot()
         available_pairs = spot.available_trading_pairs()
 
-    if target_pair not in available_pairs['combinations']:
+    if target_pair not in available_pairs["combinations"]:
         raise TargetPairError(target_pair) from None
     else:
         return str(target_pair)
