@@ -39,7 +39,7 @@ class API(object):
         )
 
     def query_exchange(self, url_path, data=None):
-        return self.send_request("GET", url_path, data=data)
+        return self.send_request(HTTPMethod.GET, url_path, data=data)
 
     def send_request(self, http_method, url_path, data=None):
         """Send request params to the exchange for response"""

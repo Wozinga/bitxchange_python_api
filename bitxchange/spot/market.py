@@ -67,8 +67,8 @@ class Market(API):
 
         if target["status"] == 1:
             return target
-        elif target["status"] == 0:
-            raise TargetPairError(target_pair)
+
+        raise TargetPairError(target_pair)
 
     def order_book(self, target_pair):
         """
@@ -87,8 +87,8 @@ class Market(API):
 
         if target["status"] == 1:
             return target
-        elif target["status"] == 0:
-            raise TargetPairError(target_pair)
+
+        raise TargetPairError(target_pair)
 
     def trade_history(self, target_pair):
         """
@@ -107,5 +107,5 @@ class Market(API):
 
         if target["status"] == 1:
             return target
-        elif target["status"] == 0:
-            raise TargetPairError(target_pair)
+
+        raise TargetPairError(target_pair)
