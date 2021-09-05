@@ -2,7 +2,7 @@
 [![Python 3.6](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/release/python-360/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation Status](https://readthedocs.org/projects/bitxchange-python-api/badge/?version=latest)](https://bitxchange-python-api.readthedocs.io/en/latest/?badge=latest)
-[![Build Status](https://travis-ci.com/Wozinga/bitxchange_python_api.svg?branch=master)](https://travis-ci.com/Wozinga/bitxchange_python_api)
+[![Build Status](https://app.travis-ci.com/Wozinga/bitxchange_python_api.svg?branch=master)](https://app.travis-ci.com/Wozinga/bitxchange_python_api)
 [![codecov](https://codecov.io/gh/Wozinga/bitxchange_python_api/branch/master/graph/badge.svg?token=V9JR3JRFEN)](https://codecov.io/gh/Wozinga/bitxchange_python_api)
 
 This is a lightweight library that works as a connector to [Bitxchange public API](https://bitxchange-python-api.readthedocs.io/en/latest/)
