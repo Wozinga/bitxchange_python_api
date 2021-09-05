@@ -1,6 +1,8 @@
 import json
 import requests
 
+from urllib.parse import urljoin
+
 from .__version__ import __version__
 
 
@@ -43,7 +45,7 @@ class API(object):
             data = {}
 
         # Join base url and passed in endpoint url
-        url = self.base_url + url_path
+        url = urljoin(self.base_url, url_path) 
 
         params = remove_none_values(
             {

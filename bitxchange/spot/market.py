@@ -54,7 +54,7 @@ class Market(API):
         """
         Description: Returns the latest ticker for the target pair provided.
 
-        GET /api/available_pairs
+        GET /api/ticker/<target_pair>
 
         Args:
             target_pair (str)
