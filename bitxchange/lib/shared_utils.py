@@ -1,7 +1,6 @@
-from bitxchange.errors import ParameterRequiredError
-from bitxchange.errors import TargetPairError
+from typing import Any, Dict, Optional
 
-from typing import Optional, Dict, Any
+from bitxchange.errors import ParameterRequiredError, TargetPairError
 
 
 def remove_none_values(input) -> dict:

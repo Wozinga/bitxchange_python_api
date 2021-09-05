@@ -1,6 +1,6 @@
-from bitxchange.spot import Spot
-
 import pytest
+
+from bitxchange.spot import Spot
 
 _client = Spot()
 

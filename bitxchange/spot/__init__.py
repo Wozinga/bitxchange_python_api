@@ -1,5 +1,5 @@
-from .market import Market
 from .account import Account
+from .market import Market
 
 
 class Spot(Market, Account):

@@ -1,7 +1,7 @@
 import json
-import requests
-
 from urllib.parse import urljoin
+
+import requests
 
 from .__version__ import __version__
 
