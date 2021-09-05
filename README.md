@@ -31,7 +31,7 @@ params = {
     "type": "sell"
 }
 
-order = client.create_order(**params)
+order = exchange.create_order(**params)
 
 print(order)
 ```
