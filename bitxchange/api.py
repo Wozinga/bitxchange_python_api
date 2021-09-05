@@ -1,9 +1,15 @@
 import json
+from enum import Enum
 from urllib.parse import urljoin
 
 import requests
 
 from .__version__ import __version__
+
+
+class HTTPMethod(Enum):
+    GET = "GET"
+    POST = "POST"
 
 
 class API(object):
@@ -64,10 +70,9 @@ class API(object):
     def _dispatch_request(self, http_method):
         """Returns session type based on send_request params"""
 
-        http_method = http_method.upper()
         method_map = {
-            "GET": self.session.get,
-            "POST": self.session.post,
+            HTTPMethod.GET: self.session.get,
+            HTTPMethod.POST: self.session.post,
         }
 
         if http_method not in method_map:

@@ -1,4 +1,4 @@
-from bitxchange.api import API
+from bitxchange.api import API, HTTPMethod
 
 
 class Account(API):
@@ -24,10 +24,9 @@ class Account(API):
 
         # retrun error if Kwargs is missing a mandatory field
         self._check_required_parameter(mandatory_params, **kwargs)
-        # self._validate_target_pairs(kwargs['pair'])
 
         url_path = "/trade/placeOrder"
-        return self.send_request("POST", url_path, kwargs)
+        return self.send_request(HTTPMethod.POST, url_path, kwargs)
 
     def check_order_status(self, **kwargs):
         """
@@ -46,10 +45,9 @@ class Account(API):
 
         # retrun error if Kwargs is missing a mandatory field
         self._check_required_parameter(mandatory_params, **kwargs)
-        # self._validate_target_pairs(kwargs['pair'])
 
         url_path = "/trade/orderstatus"
-        return self.send_request("POST", url_path, kwargs)
+        return self.send_request(HTTPMethod.POST, url_path, kwargs)
 
     def cancel_order(self, **kwargs):
         """
@@ -70,7 +68,7 @@ class Account(API):
         self._check_required_parameter(mandatory_params, **kwargs)
 
         url_path = "/trade/cancelOrder"
-        return self.send_request("POST", url_path, kwargs)
+        return self.send_request(HTTPMethod.POST, url_path, kwargs)
 
     def get_wallet_balance(self, **kwargs):
         """
@@ -91,16 +89,16 @@ class Account(API):
         self._check_required_parameter(mandatory_params, **kwargs)
 
         url_path = "/trade/getBalance"
-        return self.send_request("POST", url_path, kwargs)
+        return self.send_request(HTTPMethod.POST, url_path, kwargs)
 
-    # validates that all params and mandatory params are present
     def _check_required_parameter(self, *args, **kwargs):
+        """validates that all params and mandatory params are present"""
         from bitxchange.lib.shared_utils import check_required_parameter
 
         check_required_parameter(*args, **kwargs)
 
-    # Validates that target pair is an active pair on the exchange
     def _validate_target_pairs(self, target_pairs):
+        """Validates that target pair is an active pair on the exchange"""
         from bitxchange.lib.shared_utils import validate_target_pair
 
         validate_target_pair(target_pairs)
