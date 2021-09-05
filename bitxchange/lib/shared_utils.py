@@ -49,5 +49,5 @@ def validate_target_pair(
 
     if target_pair not in available_pairs["combinations"]:
         raise TargetPairError(target_pair) from None
-    else:
-        return str(target_pair)
+
+    return str(target_pair)
