@@ -42,7 +42,7 @@ information about the specific methods and behaviors can be found in the code do
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>Install via package name</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install bitxchange-python-api
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install bitxchange-py-api
 </pre></div>
 </div>
 </li>
@@ -72,17 +72,19 @@ to be passed in at time of instanciation.</p>
 </li>
 </ul>
 </section>
+</section>
 <section id="spot-market-data-endpoints">
-<h2>Spot Market Data Endpoints<a class="headerlink" href="#spot-market-data-endpoints" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p>available_trading_pairs()</p>
-<blockquote>
-<div><p>Description: Returns a list of all active trading pairs currently
+<h1>Spot Market Data Endpoints<a class="headerlink" href="#spot-market-data-endpoints" title="Permalink to this headline">¶</a></h1>
+<section id="available-trading-pairs">
+<h2>Available Trading pairs<a class="headerlink" href="#available-trading-pairs" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="bitxchange.spot.market.Market.available_trading_pairs">
+<span class="sig-prename descclassname"><span class="pre">bitxchange.spot.market.Market.</span></span><span class="sig-name descname"><span class="pre">available_trading_pairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bitxchange.spot.market.Market.available_trading_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Returns a list of all active trading pairs currently
 support by the exchange</p>
 <p>GET /api/available_pairs</p>
 <p>Args: None</p>
 <p>KWargs: None</p>
-</div></blockquote>
 <p>Request:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
 
@@ -106,15 +108,19 @@ support by the exchange</p>
 <span class="o">}</span>
 </pre></div>
 </div>
-</li>
-<li><p>all_market_tickers()</p>
-<blockquote>
-<div><p>Description: Returns current spot tickers for all active pairs on
+</dd></dl>
+
+</section>
+<section id="all-market-tickers">
+<h2>All Market tickers<a class="headerlink" href="#all-market-tickers" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="bitxchange.spot.market.Market.all_market_tickers">
+<span class="sig-prename descclassname"><span class="pre">bitxchange.spot.market.Market.</span></span><span class="sig-name descname"><span class="pre">all_market_tickers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bitxchange.spot.market.Market.all_market_tickers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Returns current spot tickers for all active pairs on
 the exchange</p>
 <p>GET /api/tickers</p>
 <p>Args: None</p>
 <p>KWargs: None</p>
-</div></blockquote>
 <p>Request:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
 
@@ -203,15 +209,19 @@ the exchange</p>
 <span class="o">}</span>
 </pre></div>
 </div>
-</li>
-<li><p>volume_24h()</p>
-<blockquote>
-<div><p>Description: Returns the current 24 hour trade volume of each active
+</dd></dl>
+
+</section>
+<section id="hour-volume">
+<h2>24 Hour volume<a class="headerlink" href="#hour-volume" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="bitxchange.spot.market.Market.volume_24h">
+<span class="sig-prename descclassname"><span class="pre">bitxchange.spot.market.Market.</span></span><span class="sig-name descname"><span class="pre">volume_24h</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bitxchange.spot.market.Market.volume_24h" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Returns the current 24 hour trade volume of each active
 trade pair available on the exchange.</p>
 <p>GET /api/volume24</p>
 <p>Args: None</p>
 <p>KWargs: None</p>
-</div></blockquote>
 <p>Request:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
 
@@ -255,20 +265,22 @@ trade pair available on the exchange.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</li>
-<li><p>specific_market_ticker(&lt;target_pair&gt;)</p>
-<blockquote>
-<div><p>Description: Returns a list of all active trading pairs on the exchange</p>
-<p>GET /api/available_pairs</p>
-<p>repo:</p>
-<dl class="simple">
-<dt>Args:</dt><dd><ul class="simple">
-<li><p>target_pair (str)</p></li>
-</ul>
+</dd></dl>
+
+</section>
+<section id="specific-market-ticker">
+<h2>Specific Market ticker<a class="headerlink" href="#specific-market-ticker" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="bitxchange.spot.market.Market.specific_market_ticker">
+<span class="sig-prename descclassname"><span class="pre">bitxchange.spot.market.Market.</span></span><span class="sig-name descname"><span class="pre">specific_market_ticker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_pair</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bitxchange.spot.market.Market.specific_market_ticker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Returns the latest ticker for the target pair provided.</p>
+<p>GET /api/ticker/&lt;target_pair&gt;</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>&lt;str&gt;</strong> (<em>- target_pair</em>) – </p>
 </dd>
 </dl>
 <p>KWargs: None</p>
-</div></blockquote>
 <p>Request:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
 
@@ -302,17 +314,22 @@ trade pair available on the exchange.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ERROR: <span class="s1">&#39;BTC_ET&#39;</span> is not a valid target pair or format
 </pre></div>
 </div>
-</li>
-<li><p>order_book(&lt;target_pair&gt;)</p>
-<blockquote>
-<div><p>Description: Returns current orderbook for the target pair.</p>
+</dd></dl>
+
+</section>
+<section id="order-order-book">
+<h2>Order order_book<a class="headerlink" href="#order-order-book" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="bitxchange.spot.market.Market.order_book">
+<span class="sig-prename descclassname"><span class="pre">bitxchange.spot.market.Market.</span></span><span class="sig-name descname"><span class="pre">order_book</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_pair</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bitxchange.spot.market.Market.order_book" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Returns current orderbook for the target pair.</p>
 <p>GET /api/order_book/&lt;target_pair&gt;</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>target_pair (str)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>&lt;str&gt;</strong> (<em>- target_pair</em>) – </p>
 </dd>
 </dl>
 <p>KWargs: None</p>
-</div></blockquote>
 <p>Request:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
 
@@ -343,17 +360,22 @@ trade pair available on the exchange.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ERROR: <span class="s1">&#39;BTC_EH&#39;</span> is not a valid target pair or format
 </pre></div>
 </div>
-</li>
-<li><p>trade_order(&lt;target_pair&gt;)</p>
-<blockquote>
-<div><p>Description: displays the trade history of the target pair</p>
+</dd></dl>
+
+</section>
+<section id="trade-history">
+<h2>Trade History<a class="headerlink" href="#trade-history" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="bitxchange.spot.market.Market.trade_history">
+<span class="sig-prename descclassname"><span class="pre">bitxchange.spot.market.Market.</span></span><span class="sig-name descname"><span class="pre">trade_history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_pair</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bitxchange.spot.market.Market.trade_history" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: displays the trade history of the target pair</p>
 <p>GET /api/trade_history/&lt;target_pair&gt;</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>target_pair (str)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>&lt;str&gt;</strong> (<em>- target_pair</em>) – </p>
 </dd>
 </dl>
 <p>KWargs: None</p>
-</div></blockquote>
 <p>Request:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
 
@@ -425,11 +447,12 @@ trade pair available on the exchange.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ERROR: <span class="s1">&#39;BTC_EH&#39;</span> is not a valid target pair or format
 </pre></div>
 </div>
-</li>
-</ul>
+</dd></dl>
+
+</section>
 </section>
 <section id="account-order-endpoints">
-<h2>Account Order Endpoints<a class="headerlink" href="#account-order-endpoints" title="Permalink to this headline">¶</a></h2>
+<h1>Account Order Endpoints<a class="headerlink" href="#account-order-endpoints" title="Permalink to this headline">¶</a></h1>
 <p>All API’s that interact with a users account require the API call to be
 authenticated</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exchange</span> <span class="o">=</span> <span class="n">Spot</span><span class="p">(</span>
@@ -438,31 +461,26 @@ authenticated</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<ul>
-<li><p>Create new account order</p>
-<blockquote>
-<div><p>Description: Creates a new order under the authed account, user
+<section id="create-new-account-order">
+<h2>Create New Account Order<a class="headerlink" href="#create-new-account-order" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="bitxchange.spot.account.Account.create_order">
+<span class="sig-prename descclassname"><span class="pre">bitxchange.spot.account.Account.</span></span><span class="sig-name descname"><span class="pre">create_order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bitxchange.spot.account.Account.create_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Creates a new order under the authed account, user
 has the ability to create a market price buy/sell order OR can post
 a fixed price buy/sell order.</p>
 <p>POST /trade/placeOrder</p>
 <p>args: None</p>
 <dl class="simple">
-<dt>kwargs:</dt><dd><p>amount (int) - amount of token to buy or sell
-price (int) - price to pay or be paid for amount
-pair (str) - trading target pair
-order_type (int) - 1=market_price, 2=fixed_price
-type (str) - ‘buy’ or ‘sell’</p>
-</dd>
-<dt>Mandatory Params:</dt><dd><ul class="simple">
-<li><p>amount</p></li>
-<li><p>price</p></li>
-<li><p>pair</p></li>
-<li><p>order</p></li>
-<li><p>type</p></li>
+<dt>kwargs:</dt><dd><ul class="simple">
+<li><p>amount &lt;int&gt; - amount of token to buy or sell.</p></li>
+<li><p>price &lt;int&gt; - price to pay or be paid for amount.</p></li>
+<li><p>pair &lt;str&gt; - trading target pair.</p></li>
+<li><p>order_type &lt;int&gt; - 1=market_price, 2=fixed_price.</p></li>
+<li><p>type &lt;str&gt; - ‘buy’ or ‘sell’.</p></li>
 </ul>
 </dd>
 </dl>
-</div></blockquote>
 <p>Request:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
 
@@ -531,18 +549,22 @@ type (str) - ‘buy’ or ‘sell’</p>
 <span class="o">}</span>
 </pre></div>
 </div>
-</li>
-<li><p>Check status of order</p>
-<blockquote>
-<div><p>Description: Check the current status of a given live order
+</dd></dl>
+
+</section>
+<section id="check-statis-of-active-order">
+<h2>Check Statis of Active Order<a class="headerlink" href="#check-statis-of-active-order" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="bitxchange.spot.account.Account.check_order_status">
+<span class="sig-prename descclassname"><span class="pre">bitxchange.spot.account.Account.</span></span><span class="sig-name descname"><span class="pre">check_order_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bitxchange.spot.account.Account.check_order_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Check the current status of a given live order
 belonging to the authed account.</p>
 <p>POST /trade/orderstatus</p>
 <p>args: None</p>
 <dl class="simple">
-<dt>kwargs:</dt><dd><p>orderId (str) - trade order ID</p>
+<dt>kwargs:</dt><dd><p>orderId &lt;str&gt; - trade order ID</p>
 </dd>
 </dl>
-</div></blockquote>
 <p>Request:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
 
@@ -601,25 +623,22 @@ belonging to the authed account.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;&gt;&gt;&#39;</span>
 </pre></div>
 </div>
-</li>
-<li><p>Cancel active order</p>
-<blockquote>
-<div><p>Description: Cancel a given live order belonging
+</dd></dl>
+
+</section>
+<section id="cancel-active-order">
+<h2>Cancel Active Order<a class="headerlink" href="#cancel-active-order" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="bitxchange.spot.account.Account.cancel_order">
+<span class="sig-prename descclassname"><span class="pre">bitxchange.spot.account.Account.</span></span><span class="sig-name descname"><span class="pre">cancel_order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bitxchange.spot.account.Account.cancel_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Cancel a given live order belonging
 to the authed account.</p>
 <p>POST /trade/cancelOrder</p>
-<p>Guide:</p>
 <p>args: None</p>
 <dl class="simple">
-<dt>kwargs:</dt><dd><ul class="simple">
-<li><p>orderId (str) - trade order ID</p></li>
-</ul>
-</dd>
-<dt>Mandatory Params:</dt><dd><ul class="simple">
-<li><p>orderId</p></li>
-</ul>
+<dt>kwargs:</dt><dd><p>orderId (str) - trade order ID</p>
 </dd>
 </dl>
-</div></blockquote>
 <p>Request:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bitxchange.spot</span> <span class="kn">import</span> <span class="n">Spot</span>
 
@@ -650,8 +669,8 @@ to the authed account.</p>
 <span class="o">}</span>
 </pre></div>
 </div>
-</li>
-</ul>
+</dd></dl>
+
 </section>
 </section>
 
@@ -677,8 +696,21 @@ to the authed account.</p>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started with bitxchange REST API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#api-endpoint-connection">API Endpoint Connection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#spot-market-data-endpoints">Spot Market Data Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#account-order-endpoints">Account Order Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#spot-market-data-endpoints">Spot Market Data Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#available-trading-pairs">Available Trading pairs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#all-market-tickers">All Market tickers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hour-volume">24 Hour volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specific-market-ticker">Specific Market ticker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#order-order-book">Order order_book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trade-history">Trade History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#account-order-endpoints">Account Order Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-new-account-order">Create New Account Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-statis-of-active-order">Check Statis of Active Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cancel-active-order">Cancel Active Order</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
@@ -716,7 +748,7 @@ to the authed account.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, James Cowden.
+      &copy;2021, Bitxchange.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>

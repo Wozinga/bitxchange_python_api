@@ -57,7 +57,7 @@ class Market(API):
         GET /api/ticker/<target_pair>
 
         Args:
-            target_pair (str)
+            - target_pair <str>
 
         KWargs: None
         """
@@ -77,7 +77,7 @@ class Market(API):
         GET /api/order_book/<target_pair>
 
         Args:
-            target_pair (str)
+            - target_pair <str>
 
         KWargs: None
         """
@@ -97,7 +97,7 @@ class Market(API):
         GET /api/trade_history/<target_pair>
 
         Args:
-            target_pair (str)
+            - target_pair <str>
 
         KWargs: None
         """

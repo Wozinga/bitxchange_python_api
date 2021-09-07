@@ -16,7 +16,7 @@ Installation
 
   .. code-block:: bash
 
-     pip install bitxchange-python-api
+     pip install bitxchange-py-api
 
 * Alternatively, install with git repository path
 
@@ -46,18 +46,11 @@ API Endpoint Connection
 
 
 Spot Market Data Endpoints
---------------------------
+==========================
 
-* available_trading_pairs()
-  
-    Description: Returns a list of all active trading pairs currently
-    support by the exchange
-        
-    GET /api/available_pairs
-
-    Args: None
-
-    KWargs: None
+Available Trading pairs
+-----------------------
+.. autofunction:: bitxchange.spot.market.Market.available_trading_pairs
 
   Request:
 
@@ -88,16 +81,9 @@ Spot Market Data Endpoints
     } 
 
 
-* all_market_tickers()
-  
-    Description: Returns current spot tickers for all active pairs on 
-    the exchange
-        
-    GET /api/tickers
-
-    Args: None
-
-    KWargs: None
+All Market tickers
+------------------
+.. autofunction:: bitxchange.spot.market.Market.all_market_tickers
 
   Request:
 
@@ -191,17 +177,9 @@ Spot Market Data Endpoints
       }
     }
 
-
-* volume_24h()
-  
-    Description: Returns the current 24 hour trade volume of each active
-    trade pair available on the exchange.
-
-    GET /api/volume24
-
-    Args: None
-
-    KWargs: None
+24 Hour volume
+--------------
+.. autofunction:: bitxchange.spot.market.Market.volume_24h
 
   Request:
 
@@ -250,19 +228,9 @@ Spot Market Data Endpoints
       }
     } 
 
-
-* specific_market_ticker(<target_pair>)
-  
-    Description: Returns a list of all active trading pairs on the exchange
-        
-    GET /api/available_pairs
-
-    repo:
-
-    Args:
-      - target_pair (str)
-
-    KWargs: None
+Specific Market ticker
+----------------------
+.. autofunction:: bitxchange.spot.market.Market.specific_market_ticker
 
   Request:
 
@@ -303,17 +271,9 @@ Spot Market Data Endpoints
 
     ERROR: 'BTC_ET' is not a valid target pair or format 
 
-
-* order_book(<target_pair>)
-  
-    Description: Returns current orderbook for the target pair.
-        
-    GET /api/order_book/<target_pair>
-
-    Args:
-        target_pair (str)
-
-    KWargs: None
+Order order_book
+----------------
+.. autofunction:: bitxchange.spot.market.Market.order_book
 
   Request:
 
@@ -351,17 +311,9 @@ Spot Market Data Endpoints
 
     ERROR: 'BTC_EH' is not a valid target pair or format
 
-
-* trade_order(<target_pair>)
-  
-    Description: displays the trade history of the target pair
-        
-    GET /api/trade_history/<target_pair>
-
-    Args:
-      target_pair (str)
-
-    KWargs: None
+Trade History
+-------------
+.. autofunction:: bitxchange.spot.market.Market.trade_history
 
   Request:
 
@@ -440,8 +392,10 @@ Spot Market Data Endpoints
 
     ERROR: 'BTC_EH' is not a valid target pair or format
 
+
+
 Account Order Endpoints
------------------------
+=======================
 All API's that interact with a users account require the API call to be
 authenticated
 
@@ -452,31 +406,10 @@ authenticated
     secret='abcdefg-abcdefg-abcdefg'
   )
 
+Create New Account Order
+------------------------
 
-* Create new account order
-  
-    Description: Creates a new order under the authed account, user
-    has the ability to create a market price buy/sell order OR can post
-    a fixed price buy/sell order.
-
-    POST /trade/placeOrder
-
-    args: None
-
-    kwargs:
-      amount (int) - amount of token to buy or sell
-      price (int) - price to pay or be paid for amount
-      pair (str) - trading target pair
-      order_type (int) - 1=market_price, 2=fixed_price
-      type (str) - 'buy' or 'sell'
-
-
-    Mandatory Params:
-      - amount
-      - price
-      - pair
-      - order
-      - type
+.. autofunction:: bitxchange.spot.account.Account.create_order
 
   Request:
 
@@ -553,18 +486,9 @@ authenticated
     'status': 412, 'message': 'Insufficient Balance'
     }
 
-
-* Check status of order
-  
-    Description: Check the current status of a given live order
-    belonging to the authed account.
-
-    POST /trade/orderstatus
-
-    args: None
-
-    kwargs:
-      orderId (str) - trade order ID
+Check Statis of Active Order
+----------------------------
+.. autofunction:: bitxchange.spot.account.Account.check_order_status
 
   Request:
 
@@ -631,23 +555,9 @@ authenticated
 
     '>>'
 
-
-* Cancel active order
-  
-    Description: Cancel a given live order belonging
-    to the authed account.
-
-    POST /trade/cancelOrder
-
-    Guide:
-
-    args: None
-
-    kwargs:
-      - orderId (str) - trade order ID
-    
-    Mandatory Params:
-      - orderId
+Cancel Active Order
+-------------------
+.. autofunction:: bitxchange.spot.account.Account.cancel_order
 
   Request:
 
@@ -685,5 +595,3 @@ authenticated
     {
     'status': 412, 'message': "Order doesn't exists"
     }
-
-

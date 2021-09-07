@@ -40,8 +40,21 @@
 <li class="toctree-l1"><a class="reference internal" href="intro/getting-started-api.html">Getting Started with bitxchange REST API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#api-endpoint-connection">API Endpoint Connection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#spot-market-data-endpoints">Spot Market Data Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#account-order-endpoints">Account Order Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="intro/getting-started-api.html#spot-market-data-endpoints">Spot Market Data Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#available-trading-pairs">Available Trading pairs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#all-market-tickers">All Market tickers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#hour-volume">24 Hour volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#specific-market-ticker">Specific Market ticker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#order-order-book">Order order_book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#trade-history">Trade History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="intro/getting-started-api.html#account-order-endpoints">Account Order Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#create-new-account-order">Create New Account Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#check-statis-of-active-order">Check Statis of Active Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro/getting-started-api.html#cancel-active-order">Cancel Active Order</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
@@ -56,18 +69,11 @@
 * Source Code: <a class="reference external" href="https://github.com/Wozinga/bitxchange_python_api">Bitxchange API Library</a></p>
 <ul class="simple">
 <li><p>Source Code: <a class="reference external" href="https://github.com/Wozinga/bitxchange_python_api">https://github.com/Wozinga/bitxchange_python_api</a></p></li>
-<li><p>Official API document:</p>
-<ul>
-<li><p><a class="reference external" href="https:/">https:/</a>/&lt;read the docs&gt;</p></li>
-<li><p><a class="reference external" href="https://https://github.com/Wozinga/bitxchange_python_api">https://https://github.com/Wozinga/bitxchange_python_api</a></p></li>
-</ul>
-</li>
 <li><p>Support channels:</p>
 <ul>
 <li><p>Telegram Channel: <a class="reference external" href="https://t.me/bitxchange_developer_support">https://t.me/bitxchange_developer_support</a></p></li>
 </ul>
 </li>
-<li><p>API key setup: &lt;how to setup API docs&gt;</p></li>
 </ul>
 <section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
@@ -75,7 +81,7 @@
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>Install via package name</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install bitxchange-python-api
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install bitxchange-py-api
 </pre></div>
 </div>
 </li>
@@ -134,6 +140,8 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro/getting-started-api.html">Getting Started with bitxchange REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro/getting-started-api.html#spot-market-data-endpoints">Spot Market Data Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro/getting-started-api.html#account-order-endpoints">Account Order Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
@@ -168,7 +176,7 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, James Cowden.
+      &copy;2021, Bitxchange.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>

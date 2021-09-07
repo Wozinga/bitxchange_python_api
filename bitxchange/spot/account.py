@@ -13,11 +13,11 @@ class Account(API):
         args: None
 
         kwargs:
-            amount (int) - amount of token to buy or sell
-            price (int) - price to pay or be paid for amount
-            pair (str) - trading target pair
-            order_type (int) - 1=market_price, 2=fixed_price
-            type (str) - 'buy' or 'sell'
+            - amount <int> - amount of token to buy or sell.
+            - price <int> - price to pay or be paid for amount.
+            - pair <str> - trading target pair.
+            - order_type <int> - 1=market_price, 2=fixed_price.
+            - type <str> - 'buy' or 'sell'.
         """
 
         mandatory_params = {"amount", "price", "pair", "order_type", "type"}
@@ -38,7 +38,7 @@ class Account(API):
         args: None
 
         kwargs:
-            orderId (str) - trade order ID
+            orderId <str> - trade order ID
         """
 
         mandatory_params = {"orderId"}
